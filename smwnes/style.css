@@ -1,0 +1,71 @@
+body {
+  font-family: "Noto Sans" !important;
+  background: #fefefe;
+  font-size: 16px;
+}
+
+@media (max-width: 1200px) {
+    table, th, td, body, .addr {
+        font-size: 24px !important;
+    }
+    button {
+        font-size: 36px;
+    }
+}
+
+body.dark {
+  background: #0a0a0a;
+  color: #fefefe;
+}
+
+a {
+  color: lightblue;
+  cursor: pointer;
+}
+
+.addr {
+  font-weight: bold;
+  font-family: IBM Plex Mono;
+}
+
+table,
+th,
+td {
+  font-size: 0.925em;
+  border-collapse: collapse;
+  border: 1px solid #0a0a0a;
+  min-width: 3em;
+  text-align: center;
+}
+table tr td:nth-child(4) {
+  text-align: left
+}
+
+td.dark {
+  border: 1px solid #fefefe;
+}
+
+td.last {
+  width: 1px;
+  white-space: nowrap;
+}
+
+.container {
+  text-align: center;
+  padding: 70px;
+}
+
+button {
+  font-family: IBM Plex Mono;
+}
+
+dialog {
+  max-height: 75%;
+  /*overflow-y: scroll;*/
+  padding: 0;
+  border: none;
+}
+dialog::backdrop {
+  background-color: #0a0a0a;
+  opacity: 0.5;
+}

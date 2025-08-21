@@ -1,0 +1,2400 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link
+      href="https://fonts.googleapis.com/css?family=IBM Plex Mono"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Noto Sans"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>SMW NES Hacking Documentation - RAM Map</title>
+  </head>
+  <body>
+    <!--every dialog-->
+    <dialog id="d001D">
+      <table>
+        <tr>
+          <th colspan="2"><b>Values</b></th>
+        </tr>
+        <tr>
+          <td>00</td>
+          <td>Default/standing</td>
+        </tr>
+        <tr>
+          <td>01</td>
+          <td>Walking</td>
+        </tr>
+        <tr>
+          <td>02</td>
+          <td>Running</td>
+        </tr>
+        <tr>
+          <td>04</td>
+          <td>Jumping</td>
+        </tr>
+        <tr>
+          <td>05</td>
+          <td>Spinning</td>
+        </tr>
+        <tr>
+          <td>06</td>
+          <td>Turning (Unused, broken) / Yoshi tongue (Ducking)</td>
+        </tr>
+        <tr>
+          <td>07</td>
+          <td>Ducking</td>
+        </tr>
+        <tr>
+          <td>08</td>
+          <td>Looking up</td>
+        </tr>
+        <tr>
+          <td>09</td>
+          <td>Running jump</td>
+        </tr>
+        <tr>
+          <td>0A</td>
+          <td>Falling</td>
+        </tr>
+        <tr>
+          <td>0B</td>
+          <td>Sinking</td>
+        </tr>
+        <tr>
+          <td>0C</td>
+          <td>Swimming up</td>
+        </tr>
+        <tr>
+          <td>0D</td>
+          <td>Climbing / Yoshi tongue (Idle)</td>
+        </tr>
+        <tr>
+          <td>0E</td>
+          <td>Climbing / Yoshi tongue (Moving)</td>
+        </tr>
+        <tr>
+          <td>0F</td>
+          <td>Flying</td>
+        </tr>
+        <tr>
+          <td>10</td>
+          <td>Victory pose</td>
+        </tr>
+        <tr>
+          <td>11</td>
+          <td>Dead (Small-only) / Shoot fireball (Midair)</td>
+        </tr>
+        <tr>
+          <td>12</td>
+          <td>Shoot fireball (Underwater)</td>
+        </tr>
+        <tr>
+          <td>13</td>
+          <td>Shoot fireball</td>
+        </tr>
+      </table>
+    </dialog>
+    <dialog id="d008E">
+      <table>
+        <tr>
+          <th colspan="2">Values</th>
+        </tr>
+        <tr>
+          <td>20</td>
+          <td>Title</td>
+        </tr>
+        <tr>
+          <td>21</td>
+          <td>Game Over</td>
+        </tr>
+        <tr>
+          <td>22</td>
+          <td>Player Down</td>
+        </tr>
+        <tr>
+          <td>23</td>
+          <td>Victory</td>
+        </tr>
+        <tr>
+          <td>24</td>
+          <td>Main Map</td>
+        </tr>
+        <tr>
+          <td>25</td>
+          <td>Yoshi's Island</td>
+        </tr>
+        <tr>
+          <td>26</td>
+          <td>Valley of Bowser</td>
+        </tr>
+        <tr>
+          <td>27</td>
+          <td>Vanilla Dome</td>
+        </tr>
+        <tr>
+          <td>28</td>
+          <td>Forest of Illusion</td>
+        </tr>
+        <tr>
+          <td>29</td>
+          <td>Overworld</td>
+        </tr>
+        <tr>
+          <td>2A</td>
+          <td>Underground</td>
+        </tr>
+        <tr>
+          <td>2B</td>
+          <td>Ghost House</td>
+        </tr>
+        <tr>
+          <td>2C</td>
+          <td>Castle</td>
+        </tr>
+        <tr>
+          <td>2D</td>
+          <td>Underwater</td>
+        </tr>
+        <tr>
+          <td>2E</td>
+          <td>Silence</td>
+        </tr>
+        <tr>
+          <td>2F</td>
+          <td>Ending</td>
+        </tr>
+      </table>
+    </dialog>
+    <dialog id="d008F">
+      <table>
+        <tr>
+          <th colspan="2">Values</th>
+        </tr>
+        <tr>
+          <td>01</td>
+          <td>Spin jump</td>
+        </tr>
+        <tr>
+          <td>02</td>
+          <td>Pause</td>
+        </tr>
+        <tr>
+          <td>03</td>
+          <td>Jump</td>
+        </tr>
+        <tr>
+          <td>04</td>
+          <td>Swim / spring</td>
+        </tr>
+        <tr>
+          <td>05</td>
+          <td>Level tile</td>
+        </tr>
+        <tr>
+          <td>06</td>
+          <td>Yoshi coin</td>
+        </tr>
+        <tr>
+          <td>07</td>
+          <td>1UP</td>
+        </tr>
+        <tr>
+          <td>08</td>
+          <td>Coin</td>
+        </tr>
+        <tr>
+          <td>09</td>
+          <td>Powerup</td>
+        </tr>
+        <tr>
+          <td>0A</td>
+          <td>Warp</td>
+        </tr>
+        <tr>
+          <td>0B</td>
+          <td>? block item</td>
+        </tr>
+        <tr>
+          <td>0C</td>
+          <td>Player hurt</td>
+        </tr>
+        <tr>
+          <td>0D</td>
+          <td>Mount Yoshi</td>
+        </tr>
+        <tr>
+          <td>0E</td>
+          <td>Get cape</td>
+        </tr>
+        <tr>
+          <td>0F</td>
+          <td>Thud</td>
+        </tr>
+        <tr>
+          <td>10</td>
+          <td>Clown Car explode</td>
+        </tr>
+        <tr>
+          <td>11</td>
+          <td>Enemy hit 1</td>
+        </tr>
+        <tr>
+          <td>12</td>
+          <td>Enemy hit 2</td>
+        </tr>
+        <tr>
+          <td>13</td>
+          <td>Enemy hit 3</td>
+        </tr>
+        <tr>
+          <td>14</td>
+          <td>Enemy hit 4</td>
+        </tr>
+        <tr>
+          <td>15</td>
+          <td>Enemy hit 5</td>
+        </tr>
+        <tr>
+          <td>16</td>
+          <td>Enemy hit 6</td>
+        </tr>
+        <tr>
+          <td>17</td>
+          <td>Enemy hit 7 (Unused)</td>
+        </tr>
+        <tr>
+          <td>18</td>
+          <td>Enemy hit 8 (Unused)</td>
+        </tr>
+        <tr>
+          <td>19</td>
+          <td>Yoshi tongue</td>
+        </tr>
+        <tr>
+          <td>1A</td>
+          <td>Yoshi gulp</td>
+        </tr>
+        <tr>
+          <td>1B</td>
+          <td>Yoshi spit fire</td>
+        </tr>
+        <tr>
+          <td>1C</td>
+          <td>Checkpoint</td>
+        </tr>
+        <tr>
+          <td>1D</td>
+          <td>Chainsaw</td>
+        </tr>
+      </table>
+    </dialog>
+    <dialog id="d00B2">
+      <table>
+        <tr>
+          <th colspan="2">Values (Title)</th>
+        </tr>
+        <tr>
+          <td>01</td>
+          <td>1/2 Player text</td>
+        </tr>
+        <tr>
+          <td>02</td>
+          <td>1/2 Player cursor</td>
+        </tr>
+        <tr>
+          <td>03</td>
+          <td>Title cloud (Unused)</td>
+        </tr>
+        <tr>
+          <td>04</td>
+          <td>Title enemy pop</td>
+        </tr>
+        <tr>
+          <td>07 - 08</td>
+          <td>Title Koopa (Walking)</td>
+        </tr>
+        <tr>
+          <td>09 - 0A</td>
+          <td>Title Rex (Walking)</td>
+        </tr>
+        <tr>
+          <td>0D - 0E</td>
+          <td>Title Super Koopa (Flying)</td>
+        </tr>
+        <tr>
+          <td>11 - 12</td>
+          <td>Title Mario (Sitting)</td>
+        </tr>
+        <tr>
+          <td>13 - 14</td>
+          <td>Title Yoshi (Walking)</td>
+        </tr>
+        <tr>
+          <td>15</td>
+          <td>Title Yoshi (Jumping)</td>
+        </tr>
+        <tr>
+          <th colspan="2">Values (Map)</th>
+        </tr>
+        <tr>
+          <td>16 - 18</td>
+          <td>Player walking down/idle</td>
+        </tr>
+        <tr>
+          <td>19 - 1A</td>
+          <td>Player walking left</td>
+        </tr>
+        <tr>
+          <td>1B - 1C</td>
+          <td>Player climbing</td>
+        </tr>
+        <tr>
+          <td>1D - 1F</td>
+          <td>Player walking up</td>
+        </tr>
+        <tr>
+          <td>20 - 21</td>
+          <td>Playing swimming down/idle</td>
+        </tr>
+        <tr>
+          <td>22 - 23</td>
+          <td>Player swimming left (2nd frame unused)</td>
+        </tr>
+        <tr>
+          <td>24 - 25</td>
+          <td>Player swimming up</td>
+        </tr>
+        <tr>
+          <td>26</td>
+          <td>Boo (Unused)</td>
+        </tr>
+        <tr>
+          <td>27</td>
+          <td>Halo (Unused)</td>
+        </tr>
+        <tr>
+          <td>28 - 29</td>
+          <td>Player w/ Yoshi walking down/idle</td>
+        </tr>
+        <tr>
+          <td>2A - 2B</td>
+          <td>Player w/ Yoshi walking left</td>
+        </tr>
+        <tr>
+          <td>2C - 2D</td>
+          <td>Player w/ Yoshi walking up</td>
+        </tr>
+        <tr>
+          <td>2E - 2F</td>
+          <td>Player w/ Yoshi swimming down/idle</td>
+        </tr>
+        <tr>
+          <td>30 - 31</td>
+          <td>Player w/ Yoshi swimming left (2nd frame unused)</td>
+        </tr>
+        <tr>
+          <td>32 - 33</td>
+          <td>Player w/ Yoshi swimming up</td>
+        </tr>
+        <tr>
+          <td>34</td>
+          <td>Player start level</td>
+        </tr>
+        <tr>
+          <td>35 - 36</td>
+          <td>Player w/ Yoshi start level</td>
+        </tr>
+        <tr>
+          <td>37 - 38</td>
+          <td>Player w/ Yoshi start water level</td>
+        </tr>
+        <tr>
+          <td>39 - 3A</td>
+          <td>Player start water level</td>
+        </tr>
+        <tr>
+          <td>3B - 3C</td>
+          <td>Player walking right</td>
+        </tr>
+        <tr>
+          <td>3D - 3E</td>
+          <td>Player swimming right (Unused)</td>
+        </tr>
+        <tr>
+          <td>3F - 40</td>
+          <td>Player w/ Yoshi walking right</td>
+        </tr>
+        <tr>
+          <td>41 - 42</td>
+          <td>Player w/ Yoshi swimming right (Unused)</td>
+        </tr>
+      </table>
+    </dialog>
+    <dialog id="d00DF">
+      <table>
+        <tr>
+          <th colspan="2">Game mode 0 events</th>
+        </tr>
+        <tr>
+          <td>01</td>
+          <td>Game initialization</td>
+        </tr>
+        <tr>
+          <td>02</td>
+          <td>Title screen</td>
+        </tr>
+        <tr>
+          <td>03</td>
+          <td>Player select (Title)</td>
+        </tr>
+        <tr>
+          <td>07 - 0A</td>
+          <td>Map transition</td>
+        </tr>
+        <tr>
+          <td>0B</td>
+          <td>In map</td>
+        </tr>
+        <tr>
+          <td>0C - 0D</td>
+          <td>Map warp</td>
+        </tr>
+        <tr>
+          <td>0F</td>
+          <td>World select transition</td>
+        </tr>
+        <tr>
+          <td>10</td>
+          <td>World select reset</td>
+        </tr>
+        <tr>
+          <td>11</td>
+          <td>World select</td>
+        </tr>
+        <tr>
+          <td>12</td>
+          <td>"Mario/Luigi Start!" fade in</td>
+        </tr>
+        <tr>
+          <td>13</td>
+          <td>"Mario/Luigi Start!"</td>
+        </tr>
+        <tr>
+          <td>14 - 15</td>
+          <td>"Mario/Luigi Start!" fade out</td>
+        </tr>
+        <tr>
+          <td>16 - 17</td>
+          <td>Map fade in? (From level?)</td>
+        </tr>
+        <tr>
+          <td>18</td>
+          <td>"THANK YOU" screen</td>
+        </tr>
+        <tr>
+          <td>19 - 1A</td>
+          <td>"The End" screen transition (After "THANK YOU")</td>
+        </tr>
+        <tr>
+          <td>1B</td>
+          <td>"The End" screen</td>
+        </tr>
+        <tr>
+          <td>1F</td>
+          <td>"Time Up!" Screen</td>
+        </tr>
+        <tr>
+          <td>22</td>
+          <td>Game over</td>
+        </tr>
+        <tr>
+          <td>25</td>
+          <td>Switch player</td>
+        </tr>
+        <tr>
+          <td>2E</td>
+          <td>Enter Yoshi's house</td>
+        </tr>
+        <tr>
+          <th colspan="2">Game mode 1 events</th>
+        </tr>
+        <tr>
+          <td>00</td>
+          <td>Initialize player and transition in, go to next event</td>
+        </tr>
+        <tr>
+          <td>01</td>
+          <td>Initialize level and transition out, go to next event</td>
+        </tr>
+        <tr>
+          <td>02</td>
+          <td>Normal state/no event</td>
+        </tr>
+        <tr>
+          <td>03</td>
+          <td>Enter door</td>
+        </tr>
+        <tr>
+          <td>04</td>
+          <td>Death</td>
+        </tr>
+        <tr>
+          <td>05</td>
+          <td>Castle/Ghost House intro</td>
+        </tr>
+        <tr>
+          <td>06</td>
+          <td>Level complete</td>
+        </tr>
+        <tr>
+          <td>07</td>
+          <td>Change powerup, skip to next event</td>
+        </tr>
+        <tr>
+          <td>08</td>
+          <td>Change powerup</td>
+        </tr>
+        <tr>
+          <td>09</td>
+          <td>Ending sequence</td>
+        </tr>
+        <tr>
+          <td>0A</td>
+          <td>JY Easter egg</td>
+        </tr>
+        <tr>
+          <td>0B</td>
+          <td>Go down bonus pipe</td>
+        </tr>
+        <tr>
+          <td>0C</td>
+          <td>Walk out exit pipe</td>
+        </tr>
+        <tr>
+          <td>0D</td>
+          <td>Re-enter level through pipe, go to next event</td>
+        </tr>
+        <tr>
+          <td>0E</td>
+          <td>Exit pipe up</td>
+        </tr>
+        <tr>
+          <td>0F</td>
+          <td>Enter cannon pipe</td>
+        </tr>
+        <tr>
+          <td>10</td>
+          <td>Cannon pipe launch</td>
+        </tr>
+        <tr>
+          <td>11</td>
+          <td>Enter 2nd cannon pipe</td>
+        </tr>
+        <tr>
+          <td>12</td>
+          <td>2nd cannon pipe launch</td>
+        </tr>
+        <tr>
+          <td>13</td>
+          <td>Go up bonus pipe</td>
+        </tr>
+      </table>
+    </dialog>
+    <dialog id="d00E1">
+      <table>
+        <tr>
+          <th colspan="2">Values</th>
+        </tr>
+        <tr>
+          <td>00</td>
+          <td>Default/nothing</td>
+        </tr>
+        <tr>
+          <td>01</td>
+          <td>Underwater?</td>
+        </tr>
+        <tr>
+          <td>03</td>
+          <td>Climbing</td>
+        </tr>
+        <tr>
+          <td>04</td>
+          <td>Has cape</td>
+        </tr>
+        <tr>
+          <td>06</td>
+          <td>Falling onto Yoshi</td>
+        </tr>
+        <tr>
+          <td>07</td>
+          <td>Mounting Yoshi</td>
+        </tr>
+        <tr>
+          <td>08</td>
+          <td>Cape spinning</td>
+        </tr>
+        <tr>
+          <td>09</td>
+          <td>Yoshi tongue out</td>
+        </tr>
+        <tr>
+          <td>0A</td>
+          <td>Yoshi tongue out (Walking)</td>
+        </tr>
+        <tr>
+          <td>0B</td>
+          <td>Yoshi tongue out (Ducking)</td>
+        </tr>
+        <tr>
+          <td>0C</td>
+          <td>Yoshi spit out</td>
+        </tr>
+        <tr>
+          <td>0D</td>
+          <td>Yoshi spit out (Walking)</td>
+        </tr>
+        <tr>
+          <td>0E</td>
+          <td>Yoshi spit out (Ducking)</td>
+        </tr>
+      </table>
+    </dialog>
+    <dialog id="d033B">
+      <table>
+        <tr>
+          <th colspan="2">Values</th>
+        </tr>
+        <tr>
+          <td>01</td>
+          <td>Koopa</td>
+        </tr>
+        <tr>
+          <td>02</td>
+          <td>Super Koopa</td>
+        </tr>
+        <tr>
+          <td>03</td>
+          <td>"Pop" effect</td>
+        </tr>
+        <tr>
+          <td>05</td>
+          <td>Rex</td>
+        </tr>
+      </table>
+    </dialog>
+    <dialog id="d0361">
+      <table>
+        <tr>
+          <th colspan="2">Values</th>
+        </tr>
+        <tr>
+          <td>00</td>
+          <td>Player walking down/idle</td>
+        </tr>
+        <tr>
+          <td>01</td>
+          <td>Player walking left</td>
+        </tr>
+        <tr>
+          <td>02</td>
+          <td>Player climbing</td>
+        </tr>
+        <tr>
+          <td>03</td>
+          <td>Player walking up</td>
+        </tr>
+        <tr>
+          <td>04</td>
+          <td>Playing swimming down/idle</td>
+        </tr>
+        <tr>
+          <td>05</td>
+          <td>Player swimming left (2nd frame unused)</td>
+        </tr>
+        <tr>
+          <td>06</td>
+          <td>Player swimming up</td>
+        </tr>
+        <tr>
+          <td>07</td>
+          <td>Player w/ Yoshi walking down/idle</td>
+        </tr>
+        <tr>
+          <td>08</td>
+          <td>Player w/ Yoshi walking left</td>
+        </tr>
+        <tr>
+          <td>09</td>
+          <td>Player w/ Yoshi walking up</td>
+        </tr>
+        <tr>
+          <td>0A</td>
+          <td>Player w/ Yoshi swimming down/idle</td>
+        </tr>
+        <tr>
+          <td>0B</td>
+          <td>Player w/ Yoshi swimming left (2nd frame unused)</td>
+        </tr>
+        <tr>
+          <td>0C</td>
+          <td>Player w/ Yoshi swimming up</td>
+        </tr>
+        <tr>
+          <td>0D</td>
+          <td>Player start level</td>
+        </tr>
+        <tr>
+          <td>0E</td>
+          <td>Player w/ Yoshi start level</td>
+        </tr>
+        <tr>
+          <td>0F</td>
+          <td>Player w/ Yoshi start water level</td>
+        </tr>
+        <tr>
+          <td>10</td>
+          <td>Player start water level</td>
+        </tr>
+        <tr>
+          <td>11</td>
+          <td>Player walking right</td>
+        </tr>
+        <tr>
+          <td>12</td>
+          <td>Player swimming right (Unused)</td>
+        </tr>
+        <tr>
+          <td>13</td>
+          <td>Player w/ Yoshi walking right</td>
+        </tr>
+        <tr>
+          <td>14</td>
+          <td>Player w/ Yoshi swimming right (Unused)</td>
+        </tr>
+      </table>
+    </dialog>
+    <dialog id="d037D">
+      <table>
+        <tr>
+          <th colspan="2">Values</th>
+        </tr>
+        <tr>
+          <td>01</td>
+          <td>Update life count</td>
+        </tr>
+        <tr>
+          <td>02</td>
+          <td>Update Dragon Coins</td>
+        </tr>
+        <tr>
+          <td>03</td>
+          <td>Update timer</td>
+        </tr>
+        <tr>
+          <td>04</td>
+          <td>Update score</td>
+        </tr>
+        <tr>
+          <td>05</td>
+          <td>Update coin count</td>
+        </tr>
+      </table>
+    </dialog>
+    <dialog id="0d500">
+      <table>
+        <tr>
+          <th colspan="2">Object IDs</th>
+        </tr>
+        <tr>
+          <td>00</td>
+          <td>Null/Empty</td>
+        </tr>
+        <tr>
+          <td>01</td>
+          <td>Yoshi</td>
+        </tr>
+        <tr>
+          <td>02</td>
+          <td>P-Switch</td>
+        </tr>
+        <tr>
+          <td>03</td>
+          <td>Spring</td>
+        </tr>
+        <tr>
+          <td>04</td>
+          <td>Koopa Shell</td>
+        </tr>
+        <tr>
+          <td>05</td>
+          <td>1UP</td>
+        </tr>
+        <tr>
+          <td>06</td>
+          <td>Player Fireball 1</td>
+        </tr>
+        <tr>
+          <td>07</td>
+          <td>Player Fireball 2</td>
+        </tr>
+        <tr>
+          <td>08</td>
+          <td>Yoshi's fire, middle</td>
+        </tr>
+        <tr>
+          <td>09</td>
+          <td>Yoshi's fire, bottom</td>
+        </tr>
+        <tr>
+          <td>0A</td>
+          <td>Yoshi's fire, top</td>
+        </tr>
+        <tr>
+          <td>0B</td>
+          <td>Mushroom</td>
+        </tr>
+        <tr>
+          <td>0C</td>
+          <td>Fire Flower</td>
+        </tr>
+        <tr>
+          <td>0D</td>
+          <td>Cape Feather</td>
+        </tr>
+        <tr>
+          <td>0E</td>
+          <td>Star</td>
+        </tr>
+        <tr>
+          <td>0F</td>
+          <td>Pop effect</td>
+        </tr>
+        <tr>
+          <td>10</td>
+          <td>Red Koopa</td>
+        </tr>
+        <tr>
+          <td>12</td>
+          <td>Red Shell-less Koopa</td>
+        </tr>
+        <tr>
+          <td>14</td>
+          <td>Bouncing Green Paratroopa</td>
+        </tr>
+        <tr>
+          <td>16</td>
+          <td>Rex</td>
+        </tr>
+        <tr>
+          <td>18</td>
+          <td>Squashed Rex</td>
+        </tr>
+        <tr>
+          <td>1A</td>
+          <td>Piranha Plant</td>
+        </tr>
+        <tr>
+          <td>1C</td>
+          <td>Mask for Piranha Plant</td>
+        </tr>
+        <tr>
+          <td>1E</td>
+          <td>Super Koopa (with cape)</td>
+        </tr>
+        <tr>
+          <td>20</td>
+          <td>Super Koopa, jumps (no cape)</td>
+        </tr>
+        <tr>
+          <td>21</td>
+          <td>Super Koopa, straight (no cape)</td>
+        </tr>
+        <tr>
+          <td>22</td>
+          <td>Super Koopa, glitched? (no cape)</td>
+        </tr>
+        <tr>
+          <td>23</td>
+          <td>Super Koopa, going up (no cape)</td>
+        </tr>
+        <tr>
+          <td>24</td>
+          <td>Volcano Lotus</td>
+        </tr>
+        <tr>
+          <td>26</td>
+          <td>Lotus pollen to the left</td>
+        </tr>
+        <tr>
+          <td>28</td>
+          <td>Lotus pollen up to the left</td>
+        </tr>
+        <tr>
+          <td>2A</td>
+          <td>Lotus pollen up to the right</td>
+        </tr>
+        <tr>
+          <td>2C</td>
+          <td>Lotus pollen to the right</td>
+        </tr>
+        <tr>
+          <td>2E</td>
+          <td>Swooper</td>
+        </tr>
+        <tr>
+          <td>30</td>
+          <td>Blurp (Horizontal)</td>
+        </tr>
+        <tr>
+          <td>32</td>
+          <td>Blurp (Vertical)</td>
+        </tr>
+        <tr>
+          <td>34</td>
+          <td>Blurp (Glitched?)</td>
+        </tr>
+        <tr>
+          <td>35</td>
+          <td>Blurp (Rightward?)</td>
+        </tr>
+        <tr>
+          <td>36</td>
+          <td>Red Koopa</td>
+        </tr>
+        <tr>
+          <td>38</td>
+          <td>Koopa Shell, glitched?</td>
+        </tr>
+        <tr>
+          <td>39</td>
+          <td>Mushroom in ground</td>
+        </tr>
+        <tr>
+          <td>3A</td>
+          <td>Mechakoopa</td>
+        </tr>
+        <tr>
+          <td>3C</td>
+          <td>Stomped Mechakoopa A</td>
+        </tr>
+        <tr>
+          <td>3E</td>
+          <td>Stomped Mechakoopa B</td>
+        </tr>
+        <tr>
+          <td>40</td>
+          <td>Stomped Mechakoopa C</td>
+        </tr>
+        <tr>
+          <td>42</td>
+          <td>Buzzy Beetle</td>
+        </tr>
+        <tr>
+          <td>44</td>
+          <td>Buzzy Beetle Shell</td>
+        </tr>
+        <tr>
+          <td>46</td>
+          <td>Buzzy Beetle Shell, kicked</td>
+        </tr>
+        <tr>
+          <td>48</td>
+          <td>Sideways Podoboo (spawns 3 of itself when used normally?)</td>
+        </tr>
+        <tr>
+          <td>49</td>
+          <td>1UP</td>
+        </tr>
+        <tr>
+          <td>4A</td>
+          <td>Spike Top</td>
+        </tr>
+        <tr>
+          <td>4C</td>
+          <td>Goal Tape</td>
+        </tr>
+        <tr>
+          <td>50</td>
+          <td>Climbing Koopa</td>
+        </tr>
+        <tr>
+          <td>52</td>
+          <td>Cheep Cheep, still</td>
+        </tr>
+        <tr>
+          <td>54</td>
+          <td>Line-Guided Platform</td>
+        </tr>
+        <tr>
+          <td>56</td>
+          <td>Short platform</td>
+        </tr>
+        <tr>
+          <td>58</td>
+          <td>Green Paratroopa, horizontal</td>
+        </tr>
+        <tr>
+          <td>5A</td>
+          <td>Chainsaw</td>
+        </tr>
+        <tr>
+          <td>64</td>
+          <td>Diagonal Podoboo</td>
+        </tr>
+        <tr>
+          <td>66</td>
+          <td>Nothing?</td>
+        </tr>
+        <tr>
+          <td>6A</td>
+          <td>P-Switch (From block)</td>
+        </tr>
+        <tr>
+          <td>6C</td>
+          <td>Vine</td>
+        </tr>
+        <tr>
+          <td>6E</td>
+          <td>Sliding Shell-less Koopa</td>
+        </tr>
+        <tr>
+          <td>70</td>
+          <td>Morton/Roy</td>
+        </tr>
+        <tr>
+          <td>71</td>
+          <td>Diagonal Podoboo (Lemmy/Wendy room)</td>
+        </tr>
+        <tr>
+          <td>72</td>
+          <td>Lemmy/Wendy Koopa, may crash outside of boss room</td>
+        </tr>
+        <tr>
+          <td>73</td>
+          <td>Lemmy/Wendy Dummy 1</td>
+        </tr>
+        <tr>
+          <td>74</td>
+          <td>Midway Point</td>
+        </tr>
+        <tr>
+          <td>75</td>
+          <td>Lemmy/Wendy Dummy 2</td>
+        </tr>
+        <tr>
+          <td>76</td>
+          <td>ON/OFF sign</td>
+        </tr>
+        <tr>
+          <td>77</td>
+          <td>Reznor</td>
+        </tr>
+        <tr>
+          <td>78</td>
+          <td>Reznor fire</td>
+        </tr>
+        <tr>
+          <td>79</td>
+          <td>Fuzzy</td>
+        </tr>
+        <tr>
+          <td>7A</td>
+          <td>Sliding Shell-less Koopa</td>
+        </tr>
+        <tr>
+          <td>7C</td>
+          <td>Exit level and get life</td>
+        </tr>
+        <tr>
+          <td>7D</td>
+          <td>Castle Canvas</td>
+        </tr>
+        <tr>
+          <td>7E</td>
+          <td>Urchin</td>
+        </tr>
+        <tr>
+          <td>80</td>
+          <td>Bullet Bill</td>
+        </tr>
+        <tr>
+          <td>82</td>
+          <td>Eerie</td>
+        </tr>
+        <tr>
+          <td>84</td>
+          <td>Thwomp</td>
+        </tr>
+        <tr>
+          <td>86</td>
+          <td>Vertical Urchin, may crash if put in certain positions</td>
+        </tr>
+        <tr>
+          <td>88</td>
+          <td>Ninji</td>
+        </tr>
+        <tr>
+          <td>8A</td>
+          <td>Fish Bone</td>
+        </tr>
+        <tr>
+          <td>8C</td>
+          <td>Spike Ball</td>
+        </tr>
+        <tr>
+          <td>8D</td>
+          <td>Spike Ball</td>
+        </tr>
+        <tr>
+          <td>8E</td>
+          <td>Crashes game, seems to be variant of the parachute galoomba</td>
+        </tr>
+        <tr>
+          <td>90</td>
+          <td>Fuzzy</td>
+        </tr>
+        <tr>
+          <td>94</td>
+          <td>Galoomba</td>
+        </tr>
+        <tr>
+          <td>96</td>
+          <td>Upside Down Galoomba</td>
+        </tr>
+        <tr>
+          <td>98</td>
+          <td>Parachute Galoomba</td>
+        </tr>
+        <tr>
+          <td>9A</td>
+          <td>Spiny</td>
+        </tr>
+        <tr>
+          <td>9C</td>
+          <td>Podoboo</td>
+        </tr>
+        <tr>
+          <td>9E</td>
+          <td>Diagonal Podoboo</td>
+        </tr>
+        <tr>
+          <td>A0</td>
+          <td>Winged Galoomba</td>
+        </tr>
+        <tr>
+          <td>A2</td>
+          <td>Dry Bones</td>
+        </tr>
+        <tr>
+          <td>A4</td>
+          <td>Glitched Dry Bones?</td>
+        </tr>
+        <tr>
+          <td>A6</td>
+          <td>Nothing?</td>
+        </tr>
+        <tr>
+          <td>A7</td>
+          <td>Dry Bones Bone Projectile</td>
+        </tr>
+        <tr>
+          <td>A8</td>
+          <td>Dry Bones Shattered</td>
+        </tr>
+        <tr>
+          <td>AC</td>
+          <td>Bony Beetle, left</td>
+        </tr>
+        <tr>
+          <td>AD</td>
+          <td>Bony Beetle, right</td>
+        </tr>
+        <tr>
+          <td>AE</td>
+          <td>Crumbled Bony Beetle</td>
+        </tr>
+        <tr>
+          <td>AF</td>
+          <td>Crumbled Bony Beetle</td>
+        </tr>
+        <tr>
+          <td>B0</td>
+          <td>Weird fly thing???</td>
+        </tr>
+        <tr>
+          <td>B1</td>
+          <td>Weird fly thing, blocky???</td>
+        </tr>
+        <tr>
+          <td>B2</td>
+          <td>Football</td>
+        </tr>
+        <tr>
+          <td>B4</td>
+          <td>Bouncing rock</td>
+        </tr>
+        <tr>
+          <td>B6</td>
+          <td>Nothing?</td>
+        </tr>
+        <tr>
+          <td>B8</td>
+          <td>Princess Peach</td>
+        </tr>
+        <tr>
+          <td>B9</td>
+          <td>Nothing? (Princess Peach duplicate)</td>
+        </tr>
+        <tr>
+          <td>BA</td>
+          <td>Black cloud?</td>
+        </tr>
+        <tr>
+          <td>BB</td>
+          <td>Nothing?</td>
+        </tr>
+        <tr>
+          <td>BC</td>
+          <td>
+            Clown Car Explosion Smoke (Has null behavior, movement data and
+            mappings are handled in Bowser code)
+          </td>
+        </tr>
+        <tr>
+          <td>BD</td>
+          <td>Nothing?</td>
+        </tr>
+        <tr>
+          <td>BF</td>
+          <td>Princess Mushroom</td>
+        </tr>
+        <tr>
+          <td>C0</td>
+          <td>Chargin' Chuck</td>
+        </tr>
+        <tr>
+          <td>C2</td>
+          <td>Chargin' Chuck (Chasing)</td>
+        </tr>
+        <tr>
+          <td>C4</td>
+          <td>Chargin' Chuck (Stunned)</td>
+        </tr>
+        <tr>
+          <td>C6</td>
+          <td>Chargin' Chuck (Hit once)</td>
+        </tr>
+        <tr>
+          <td>C8</td>
+          <td>Chargin' Chuck (Hit once, chasing)</td>
+        </tr>
+        <tr>
+          <td>CA</td>
+          <td>Chargin' Chuck (Hit once, stunned)</td>
+        </tr>
+        <tr>
+          <td>CC</td>
+          <td>Chargin' Chuck (Hit twice)</td>
+        </tr>
+        <tr>
+          <td>CE</td>
+          <td>Chargin' Chuck (Hit twice, chasing)</td>
+        </tr>
+        <tr>
+          <td>D0</td>
+          <td>Baseball Chuck</td>
+        </tr>
+        <tr>
+          <td>D2</td>
+          <td>Football Chuck</td>
+        </tr>
+        <tr>
+          <td>D4</td>
+          <td>Diggin' Chuck</td>
+        </tr>
+        <tr>
+          <td>D6</td>
+          <td>Nothing?</td>
+        </tr>
+        <tr>
+          <td>D8</td>
+          <td>Boo Buddies Center</td>
+        </tr>
+        <tr>
+          <td>DA</td>
+          <td>Boo</td>
+        </tr>
+        <tr>
+          <td>DC</td>
+          <td>Boo Crew Boo</td>
+        </tr>
+        <tr>
+          <td>DE</td>
+          <td>Boo, flies off?</td>
+        </tr>
+        <tr>
+          <td>E0</td>
+          <td>Propeller</td>
+        </tr>
+        <tr>
+          <td>E1</td>
+          <td>Bowser</td>
+        </tr>
+        <tr>
+          <td>E2</td>
+          <td>Castle spike from below</td>
+        </tr>
+        <tr>
+          <td>E4</td>
+          <td>Dino Rhino</td>
+        </tr>
+        <tr>
+          <td>E6</td>
+          <td>Dino Torch</td>
+        </tr>
+        <tr>
+          <td>E8</td>
+          <td>Bonus block 1UP (behind BG layer)</td>
+        </tr>
+        <tr>
+          <td>E9</td>
+          <td>Bonus block coin</td>
+        </tr>
+        <tr>
+          <td>EA</td>
+          <td>Bonus question block 1</td>
+        </tr>
+        <tr>
+          <td>EC</td>
+          <td>Bonus question block 2</td>
+        </tr>
+        <tr>
+          <td>EE</td>
+          <td>Bonus question block 3</td>
+        </tr>
+        <tr>
+          <td>F0</td>
+          <td>Nothing?</td>
+        </tr>
+        <tr>
+          <td>F2</td>
+          <td>BG Priority Flag Up (Applies to sprites above this)</td>
+        </tr>
+        <tr>
+          <td>F3</td>
+          <td>BG Priority Flag Down (Applies to sprites below this)</td>
+        </tr>
+        <tr>
+          <td>F4</td>
+          <td>Exit Pipe</td>
+        </tr>
+        <tr>
+          <td>F5</td>
+          <td>Exit Pipe</td>
+        </tr>
+        <tr>
+          <td>F6</td>
+          <td>Castle spike from below</td>
+        </tr>
+        <tr>
+          <td>F8</td>
+          <td>Castle spike from above</td>
+        </tr>
+        <tr>
+          <td>FA</td>
+          <td>Green Paratroopa, vertical</td>
+        </tr>
+        <tr>
+          <td>FC</td>
+          <td>Countdown Platform (1 second)</td>
+        </tr>
+        <tr>
+          <td>FE</td>
+          <td>Countdown Platform (4 seconds)</td>
+        </tr>
+      </table>
+    </dialog>
+    <center>
+      <h1 style="margin-bottom: 1px">SMW NES Hacking Document</h1>
+      <button id="theme" onclick="changeTheme()">Dark Theme</button>
+      <p>RAM Map (2024-1-29)</p>
+    </center>
+    <div id="tbl">
+      <table style="width: 85%">
+        <tr>
+          <th>Address</th>
+          <th>Length</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Details</th>
+        </tr>
+        <tr>
+          <td class="addr" id="a0000">$0000</td>
+          <td style="min-width: 6em">1 byte</td>
+          <td>Mirror</td>
+          <td colspan="2">
+            PPU control mirror, responsible for things like sprite size, NMI
+            generation, etc.
+          </td>
+        </tr>
+        <tr>
+          <td class="addr" id="a0001">$0001</td>
+          <td>1 byte</td>
+          <td>Mirror</td>
+          <td colspan="2">
+            PPU mask mirror, responsible for color effects and the rendering of
+            sprites and backgrounds.
+          </td>
+        </tr>
+        <tr>
+          <td class="addr" id="a0002">$0002</td>
+          <td>1 byte</td>
+          <td>Mirror</td>
+          <td colspan="2">
+            X scroll position of the PPU, copied to $2006 first.
+          </td>
+        </tr>
+        <tr>
+          <td class="addr" id="a0003">$0003</td>
+          <td>1 byte</td>
+          <td>Mirror</td>
+          <td colspan="2">
+            Y scroll position of the PPU, copied to $2006 after
+            <a href="#a0002">$0002</a>.
+          </td>
+        </tr>
+        <tr>
+          <td class="addr" id="a0004">$0004</td>
+          <td>1 byte</td>
+          <td>Misc.</td>
+          <td colspan="2">Unknown, possibly related to collision.</td>
+        </tr>
+        <tr>
+          <td class="addr" id="a0006">$0006</td>
+          <td>1 byte</td>
+          <td>Counter</td>
+          <td colspan="2">Frame counter.</td>
+        </tr>
+        <tr>
+          <td class="addr" id="a0007">$0007</td>
+          <td>1 byte</td>
+          <td>Misc.</td>
+          <td colspan="2">
+            Slightly delayed mirror of <a href="#a0006">$0006</a>. Exact purpose
+            is currently unknown, but it's used to continuously increment
+            <a href="#a00E4">$00E4</a> while it's desynchronized. May be tied to
+            the overworld.
+          </td>
+        </tr>
+        <tr>
+          <td class="addr" id="a0008">$0008</td>
+          <td>1 byte</td>
+          <td>Misc.</td>
+          <td colspan="2">
+            Backup of PRG bank 42's ID, used to swap bank 42 back into the 1st
+            PRG slot after briefly swapping the 1st sound bank in. Always #$2A.
+          </td>
+        </tr>
+        <tr>
+          <td class="addr" id="a0009">$0009</td>
+          <td>1 byte</td>
+          <td>Misc.</td>
+          <td colspan="2">
+            Backup of PRG bank 41's ID, used to swap bank 41 back into the 2nd
+            PRG slot after briefly swapping the 2nd sound bank in. Always #$29.
+          </td>
+        </tr>
+        <tr>
+          <td class="addr" id="a000A">$000A</td>
+          <td>2 bytes</td>
+          <td>Player</td>
+          <td colspan="2">
+            Player X position (16-bit, Big-Endian). High byte is their screen,
+            low byte is the coordinate.
+          </td>
+        </tr>
+        <tr>
+          <td class="addr" id="a000C">$000C</td>
+          <td>2 bytes</td>
+          <td>Player</td>
+          <td colspan="2">
+            Player Y position (16-bit, Big-Endian). High byte is their screen,
+            low byte is the coordinate.
+          </td>
+        </tr>
+        <tr>
+          <td class="addr" id="a000E">$000E</td>
+          <td>2 bytes</td>
+          <td>Player</td>
+          <td colspan="2">
+            Mirror of the <a href="#a000A">player's X position</a>. Exact
+            purpose is unknown, but it's used for things like collision and
+            sprite position. It's inversely copied back into the
+            <a href="#a000C">player's X position</a> in PRG bank 61.
+          </td>
+        </tr>
+        <tr>
+          <td class="addr" id="a0010">$0010</td>
+          <td>2 bytes</td>
+          <td>Player</td>
+          <td colspan="2">
+            Mirror of the <a href="#a000C">player's Y position</a>. Behavior and
+            purpose is similar to the previous location.
+          </td>
+        </tr>
+        <tr>
+          <td class="addr" id="a0012">$0012</td>
+          <td>1 byte</td>
+          <td>Player</td>
+          <td colspan="2">Player sprite X position.</td>
+        </tr>
+        <tr>
+          <td class="addr" id="a0013">$0013</td>
+          <td>1 byte</td>
+          <td>Player</td>
+          <td colspan="2">Player sprite Y position.</td>
+        </tr>
+        <tr>
+          <td class="addr" id="a0014">$0014</td>
+          <td>1 byte</td>
+          <td>Player</td>
+          <td colspan="2">Player X speed.</td>
+        </tr>
+        <tr>
+          <td class="addr" id="a0015">$0015</td>
+          <td>1 byte</td>
+          <td>Player</td>
+          <td colspan="2">Player Y speed.</td>
+        </tr>
+        <tr>
+          <td class="addr" id="a0017">$0017</td>
+          <td>1 byte</td>
+          <td>Player</td>
+          <td colspan="2">Player animation frame.</td>
+        </tr>
+        <tr>
+          <td class="addr" id="a0018">$0018</td>
+          <td>1 byte</td>
+          <td>Player</td>
+          <td colspan="2">Player animation frame length (in video frames).</td>
+        </tr>
+        <tr>
+          <td class="addr" id="a0019">$0019</td>
+          <td>1 byte</td>
+          <td>Player</td>
+          <td colspan="2">
+            Player movement bits.<br />
+            Bit 0: Horizontal direction (0 = Right, 1 = Left)<br />
+            Bit 2: Vertical direction (0 = Down, 1 = Up)<br />
+            Bit 6: Sprite Direction (0 = Right, 1 = Left)
+          </td>
+        </tr>
+        <tr>
+          <td class="addr" id="a001A">$001A</td>
+          <td>1 byte</td>
+          <td>Player</td>
+          <td colspan="2">
+            Player sprite attributes, sets
+            <a href="https://www.nesdev.org/wiki/PPU_OAM#Byte_2">attributes</a>
+            of each of the player's metasprites. Only the mirroring and priority
+            bits are ever used, and changing the palette bits will only affect
+            the top half of the player sprite.
+          </td>
+        </tr>
+        <tr>
+          <td class="addr" id="a001B">$001B</td>
+          <td>2 bytes</td>
+          <td>Player</td>
+          <td colspan="2">Player animation frame pointer.</td>
+        </tr>
+        <tr>
+          <td class="addr" id="a001D">$001D</td>
+          <td>1 byte</td>
+          <td>Player</td>
+          <td>
+            Player action, tied directly to animations and affects what the
+            player is able to do.
+          </td>
+          <td><a onclick="openDialog('d001D')">Values</a></td>
+        </tr>
+        <tr>
+          <td class="addr" id="a001E">$001E</td>
+          <td>1 byte</td>
+          <td>Player</td>
+          <td colspan="2">
+            Previous player action, used to detect action changes between 2
+            frames.
+          </td>
+        </tr>
+        <tr>
+          <td class="addr" id="a0028">$0028</td>
+          <td>1 byte</td>
+          <td>Player</td>
+          <td colspan="2">
+            Scaled player X speed, determines how much to offset the player's X
+            position each frame. Its value is
+            <a href="rom.html#a073AE1">table</a> based and is determined by the
+            upper nybble of the <a href="#a0014">player's x speed</a>.
+          </td>
+        </tr>
+        <tr>
+          <td class="addr" id="a002B">$002B</td>
+          <td>1 byte</td>
+          <td>Player</td>
+          <td colspan="2">
+            Scaled player Y speed, determines how much to offset the player's Y
+            position each frame. It is scaled the same way as
+            <a href="#a0028">$0028</a>.
+          </td>
+        </tr>
+        <tr>
+          <td class="addr" id="a003A">$003A</td>
+          <td>1 byte</td>
+          <td>Player</td>
+          <td colspan="2">
+            Player's sprite width, in 8x8 tiles. Graphical only.
+          </td>
+        </tr>
+        <tr>
+          <td class="addr" id="a003B">$003B</td>
+          <td>1 byte</td>
+          <td>Player</td>
+          <td colspan="2">
+            Player's sprite height, in 8x8 tiles. Graphical only.
+          </td>
+        </tr>
+        <tr>
+          <td class="addr" id="a004A">$004A</td>
+          <td>1 byte</td>
+          <td>Counter</td>
+          <td colspan="2">Koopa shell hit counter.</td>
+        </tr>
+        <tr>
+          <td class="addr" id="a008C">$008C</td>
+          <td>2 bytes</td>
+          <td>Levels</td>
+          <td colspan="2">
+            Current level screen order pointer. Used to determine how the 16x16
+            block screens should be laid out.
+          </td>
+        </tr>
+        <tr>
+          <td class="addr" id="a008E">$008E</td>
+          <td>1 byte</td>
+          <td>Sound</td>
+          <td>
+            Music register. Changes the music to whatever ID is written to it,
+            assuming it's different from the current song.
+          </td>
+          <td><a onclick="openDialog('d008E')">Values</a></td>
+        </tr>
+        <tr>
+          <td class="addr" id="a008F">$008F</td>
+          <td>1 byte</td>
+          <td>Sound</td>
+          <td>
+            Sound effect register. Plays whatever SFX ID is written to it.
+          </td>
+          <td><a onclick="openDialog('d008F')">Values</a></td>
+        </tr>
+        <tr>
+          <td class="addr" id="a0090">$0090</td>
+          <td>1 byte</td>
+          <td>Sound</td>
+          <td colspan="2">
+            Back-up of the <a href="#a008E">music register</a>. Used to set the
+            song back after the invincibility music plays.
+          </td>
+        </tr>
+        <tr>
+          <td class="addr" id="a0096">$0096</td>
+          <td>1 byte</td>
+          <td>Collision</td>
+          <td colspan="2">
+            ID of the tile inside the player's hitbox, seems to be based off the
+            player's head.
+          </td>
+        </tr>
+        <tr>
+          <td class="addr" id="a0099">$0099</td>
+          <td>1 byte</td>
+          <td>Collision</td>
+          <td colspan="2">ID of the tile below the player's feet.</td>
+        </tr>
+        <tr>
+          <td class="addr" id="a00A3">$00A3</td>
+          <td>1 byte</td>
+          <td>Objects</td>
+          <td colspan="2">Object count.</td>
+        </tr>
+        <tr>
+          <td class="addr" id="a00A4">$00A4</td>
+          <td>1 byte</td>
+          <td>Objects</td>
+          <td colspan="2">
+            Index of the currently running object slot. Determines which
+            object's code is being run at a given time.
+          </td>
+        </tr>
+        <tr>
+          <td class="addr" id="a00AE">$00AE</td>
+          <td>2 bytes</td>
+          <td>Sprites</td>
+          <td colspan="2">Game mode 0 sprite animation pointer.</td>
+        </tr>
+        <tr>
+          <td class="addr" id="a00B0">$00B0</td>
+          <td>1 byte</td>
+          <td>Graphics</td>
+          <td colspan="2">Amount of 8x8 tile rows to draw to the screen.</td>
+        </tr>
+        <tr>
+          <td class="addr" id="a00B1">$00B1</td>
+          <td>1 byte</td>
+          <td>Graphics</td>
+          <td colspan="2">
+            Amount of 16x16 tile attribute rows being updated.
+          </td>
+        </tr>
+        <tr>
+          <td class="addr" id="a00B2">$00B2</td>
+          <td>7 bytes</td>
+          <td>Sprites</td>
+          <td>
+            Game mode 0 sprites. Note that these have no animation system and
+            are animated by cycling between sprites.
+          </td>
+          <td><a onclick="openDialog('d00B2')">Sprite IDs</a></td>
+        </tr>
+        <tr>
+          <td class="addr" id="a00C3">$00C3</td>
+          <td>1 byte</td>
+          <td>Flag</td>
+          <td colspan="2">Boo Buddies enabled flag.</td>
+        </tr>
+        <tr>
+          <td class="addr" id="a00C4">$00C4</td>
+          <td>2 bytes</td>
+          <td>Objects</td>
+          <td colspan="2">Boo Buddies X position (16-bit).</td>
+        </tr>
+        <tr>
+          <td class="addr" id="a00C6">$00C6</td>
+          <td>2 bytes</td>
+          <td>Objects</td>
+          <td colspan="2">Boo Buddies Y position (16-bit).</td>
+        </tr>
+        <tr>
+          <td class="addr" id="a00C9">$00C9</td>
+          <td>2 bytes</td>
+          <td>Objects</td>
+          <td colspan="2">Player attribute data pointer.</td>
+        </tr>
+        <tr>
+          <td class="addr" id="a00D0">$00D0</td>
+          <td>12 bytes</td>
+          <td>Levels</td>
+          <td colspan="2">Level screen data pointers?</td>
+        </tr>
+        <tr>
+          <td class="addr" id="a00DC">$00DC</td>
+          <td>2 bytes</td>
+          <td>Levels</td>
+          <td colspan="2">Level object set pointer.</td>
+        </tr>
+        <tr>
+          <td class="addr" id="a00DE">$00DE</td>
+          <td>1 byte</td>
+          <td>Misc.</td>
+          <td colspan="2">
+            Game mode.<br />00 = Outside of a level (Map, title, etc)<br />01 =
+            In a level
+          </td>
+        </tr>
+        <tr>
+          <td class="addr" id="a00DF">$00DF</td>
+          <td>1 byte</td>
+          <td>Misc.</td>
+          <td>Event trigger.</td>
+          <td><a onclick="openDialog('d00DF')">Event IDs</a></td>
+        </tr>
+        <tr>
+          <td class="addr" id="a00E0">$00E0</td>
+          <td>1 byte</td>
+          <td>Misc.</td>
+          <td colspan="2">
+            Current event part, used to sequence events. More info
+            <a href="events.html">here</a>.
+          </td>
+        </tr>
+        <tr>
+          <td class="addr" id="a00E1">$00E1</td>
+          <td>1 byte</td>
+          <td>Player</td>
+          <td>Player state.</td>
+          <td><a onclick="openDialog('d00E1')">Values</a></td>
+        </tr>
+        <tr>
+          <td class="addr" id="a00E5">$00E5</td>
+          <td>2 bytes</td>
+          <td>Player</td>
+          <td colspan="2">Player animation pointer.</td>
+        </tr>
+        <tr>
+          <td class="addr" id="a00FE">$00FE</td>
+          <td>2 bytes</td>
+          <td>Sound</td>
+          <td colspan="2">Misc sound driver pointer.</td>
+        </tr>
+        <tr>
+          <td class="addr" id="a030A">$030A</td>
+          <td>1 byte</td>
+          <td>I/O</td>
+          <td colspan="2">Controller 1 buttons held.</td>
+        </tr>
+        <tr>
+          <td class="addr" id="a030B">$030B</td>
+          <td>1 byte</td>
+          <td>I/O</td>
+          <td colspan="2">Controller 2 buttons held (Unused).</td>
+        </tr>
+        <tr>
+          <td class="addr" id="a030C">$030C</td>
+          <td>1 byte</td>
+          <td>I/O</td>
+          <td colspan="2">Controller 1 buttons pressed (Lasts 1 frame).</td>
+        </tr>
+        <tr>
+          <td class="addr" id="a030D">$030D</td>
+          <td>1 byte</td>
+          <td>I/O</td>
+          <td colspan="2">
+            Controller 2 buttons pressed (Unused, lasts 1 frame).
+          </td>
+        </tr>
+        <tr>
+          <td class="addr" id="a030E">$030E</td>
+          <td>1 byte</td>
+          <td>I/O</td>
+          <td colspan="2">
+            Controller 1 input mirror (Used to clear pressed buttons variable).
+          </td>
+        </tr>
+        <tr>
+          <td class="addr" id="a030F">$030F</td>
+          <td>1 byte</td>
+          <td>I/O</td>
+          <td colspan="2">
+            Controller 2 input mirror (Unused, used to clear pressed buttons
+            variable).
+          </td>
+        </tr>
+        <tr>
+          <td class="addr" id="a0310">$0310</td>
+          <td>1 byte</td>
+          <td>Graphics</td>
+          <td colspan="2">Current BG palette.</td>
+        </tr>
+        <tr>
+          <td class="addr" id="a0311">$0311</td>
+          <td>1 byte</td>
+          <td>Graphics</td>
+          <td colspan="2">BG fadeout mode?</td>
+        </tr>
+        <tr>
+          <td class="addr" id="a0313">$0313</td>
+          <td>1 byte</td>
+          <td>Counter</td>
+          <td colspan="2">Second counter, seemingly unused Somari remnant.</td>
+        </tr>
+        <tr>
+          <td class="addr" id="a0326">$0326</td>
+          <td>1 byte</td>
+          <td>Camera</td>
+          <td colspan="2">Scroll speed.</td>
+        </tr>
+        <tr>
+          <td class="addr" id="a032D">$032D</td>
+          <td>1 byte</td>
+          <td>Graphics</td>
+          <td colspan="2">Enable 8x8 tilemap offset.</td>
+        </tr>
+        <tr>
+          <td class="addr" id="a032F">$032F</td>
+          <td>1 byte</td>
+          <td>Graphics</td>
+          <td colspan="2">Current 8x8 tilemap.</td>
+        </tr>
+        <tr>
+          <td class="addr" id="a0330">$0330</td>
+          <td>1 byte</td>
+          <td>Graphics</td>
+          <td colspan="2">8x8 tilemap X offset.</td>
+        </tr>
+        <tr>
+          <td class="addr" id="a0331">$0331</td>
+          <td>1 byte</td>
+          <td>Graphics</td>
+          <td colspan="2">8x8 tilemap Y offset.</td>
+        </tr>
+        <tr>
+          <td class="addr" id="a033B">$033B</td>
+          <td>9 bytes</td>
+          <td>Sprites</td>
+          <td>Game mode 0 sprite slot/types.</td>
+          <td><a onclick="openDialog('d033B')">Values</a></td>
+        </tr>
+        <tr>
+          <td class="addr" id="a034D">$034D</td>
+          <td>9 bytes</td>
+          <td>Flag</td>
+          <td colspan="2">Game mode 0 sprite flags?</td>
+        </tr>
+        <tr>
+          <td class="addr" id="a0356">$0356</td>
+          <td>5 bytes</td>
+          <td>Sprites</td>
+          <td colspan="2">Game mode 0 sprite Y positions.</td>
+        </tr>
+        <tr>
+          <td class="addr" id="a0361">$0361</td>
+          <td>1 byte</td>
+          <td>Player</td>
+          <td>Player map animation.</td>
+          <td><a onclick="openDialog('d0361')">Values</a></td>
+        </tr>
+        <tr>
+          <td class="addr" id="a0365">$0365</td>
+          <td>1 byte</td>
+          <td>Misc.</td>
+          <td colspan="2">
+            Title demo player animation? Seems to be related to their action.
+          </td>
+        </tr>
+        <tr>
+          <td class="addr" id="a0366">$0366</td>
+          <td>1 byte</td>
+          <td>Misc.</td>
+          <td colspan="2">
+            Title demo player jump timer? Increments every 2 frames and resets
+            when the "player" reaches the ground.
+          </td>
+        </tr>
+        <tr>
+          <td class="addr" id="a0367">$0367</td>
+          <td>1 byte</td>
+          <td>Misc.</td>
+          <td colspan="2">
+            Title demo player walk timer? Increments every 8 frames while the
+            "player" is walking and doesn't reset.
+          </td>
+        </tr>
+        <tr>
+          <td class="addr" id="a036A">$036A</td>
+          <td>1 byte</td>
+          <td>Player</td>
+          <td colspan="2">Player 1 life count.</td>
+        </tr>
+        <tr>
+          <td class="addr" id="a036B">$036B</td>
+          <td>1 byte</td>
+          <td>Player</td>
+          <td colspan="2">Player 2 life count.</td>
+        </tr>
+        <tr>
+          <td class="addr" id="a036C">$036C</td>
+          <td>1 byte</td>
+          <td>Player</td>
+          <td colspan="2">Player 1 dragon coin count.</td>
+        </tr>
+        <tr>
+          <td class="addr" id="a036D">$036D</td>
+          <td>1 byte</td>
+          <td>Player</td>
+          <td colspan="2">Player 2 dragon coin count.</td>
+        </tr>
+        <tr>
+          <td class="addr" id="a036E">$036E</td>
+          <td>1 byte</td>
+          <td>Player</td>
+          <td colspan="2">Level timer (16-bit).</td>
+        </tr>
+        <tr>
+          <td class="addr" id="a0370">$0370</td>
+          <td>2 bytes</td>
+          <td>Player</td>
+          <td colspan="2">
+            Level timer backup (16-bit), always contains the default timer value
+            (300) and serves no purpose.
+          </td>
+        </tr>
+        <tr>
+          <td class="addr" id="a0372">$0372</td>
+          <td>2 bytes</td>
+          <td>Player</td>
+          <td colspan="2">Player 1 score (16-bit).</td>
+        </tr>
+        <tr>
+          <td class="addr" id="a0374">$0374</td>
+          <td>2 bytes</td>
+          <td>Player</td>
+          <td colspan="2">Player 2 score (16-bit).</td>
+        </tr>
+        <tr>
+          <td class="addr" id="a0376">$0376</td>
+          <td>1 bytes</td>
+          <td>Player</td>
+          <td colspan="2">Player 1 coin count.</td>
+        </tr>
+        <tr>
+          <td class="addr" id="a0377">$0377</td>
+          <td>1 byte</td>
+          <td>Player</td>
+          <td colspan="2">Player 2 coin count.</td>
+        </tr>
+        <tr>
+          <td class="addr" id="a0378">$0378</td>
+          <td>1 byte</td>
+          <td>Graphics</td>
+          <td colspan="2">Life display tile buffer.</td>
+        </tr>
+        <tr>
+          <td class="addr" id="a0379">$0379</td>
+          <td>1 byte</td>
+          <td>Graphics</td>
+          <td colspan="2">Dragon coin HUD tile buffer.</td>
+        </tr>
+        <tr>
+          <td class="addr" id="a037A">$037A</td>
+          <td>1 byte</td>
+          <td>Graphics</td>
+          <td colspan="2">Timer display tile buffer.</td>
+        </tr>
+        <tr>
+          <td class="addr" id="a037B">$037B</td>
+          <td>1 byte</td>
+          <td>Graphics</td>
+          <td colspan="2">Score display tile buffer.</td>
+        </tr>
+        <tr>
+          <td class="addr" id="a037C">$037C</td>
+          <td>1 byte</td>
+          <td>Graphics</td>
+          <td colspan="2">Coin counter tile buffer.</td>
+        </tr>
+        <tr>
+          <td class="addr" id="a0378-1">$0378</td>
+          <td>1 byte</td>
+          <td>Player</td>
+          <td colspan="2">
+            Player overworld animation frame. Values are equivalent to
+            <a onclick="openDialog('d00B2')">game mode 0 sprites</a> minus #$16.
+          </td>
+        </tr>
+        <tr>
+          <td class="addr" id="a0379-1">$0379</td>
+          <td>1 byte</td>
+          <td>Flag</td>
+          <td colspan="2">Player map movement flag.</td>
+        </tr>
+        <tr>
+          <td class="addr" id="a037D">$037D</td>
+          <td>1 byte</td>
+          <td>Graphics</td>
+          <td>HUD update sequence.</td>
+          <td><a onclick="openDialog('d037D')">Values</a></td>
+        </tr>
+        <tr>
+          <td class="addr" id="a037F">$037F</td>
+          <td>1 byte</td>
+          <td>Overworld</td>
+          <td colspan="2">Current map level ID.</td>
+        </tr>
+        <tr>
+          <td class="addr" id="a0381">$0381</td>
+          <td>6 bytes</td>
+          <td>Overworld</td>
+          <td colspan="2">Player 1 castle completion flags.</td>
+        </tr>
+        <tr>
+          <td class="addr" id="a0389">$0389</td>
+          <td>6 bytes</td>
+          <td>Overworld</td>
+          <td colspan="2">Player 2 castle completion flags.</td>
+        </tr>
+        <tr>
+          <td class="addr" id="a0390">$0390</td>
+          <td>1 byte</td>
+          <td>Misc.</td>
+          <td colspan="2">
+            Overworld map screen? Seems to be related to which segment of the
+            map is loaded. Values between 00 and 02 occur at the lower half and
+            03 and 04 occur at the top half.
+          </td>
+        </tr>
+        <tr>
+          <td class="addr" id="a0393">$0393</td>
+          <td>1 byte</td>
+          <td>Player</td>
+          <td colspan="2">
+            Player 1 Yoshi state backup, updated when leaving a level and always
+            a binary value. Used to store their Yoshi state on overworld.
+          </td>
+        </tr>
+        <tr>
+          <td class="addr" id="a0394">$0394</td>
+          <td>1 byte</td>
+          <td>Player</td>
+          <td colspan="2">
+            Player 2 Yoshi state backup, updated when leaving a level and always
+            a binary value. Used to store their Yoshi state on overworld.
+          </td>
+        </tr>
+        <tr>
+          <td class="addr" id="a0396">$0396</td>
+          <td>1 byte</td>
+          <td>Overworld</td>
+          <td colspan="2">World select trigger, activates when set to zero.</td>
+        </tr>
+        <tr>
+          <td class="addr" id="a0397">$0397</td>
+          <td>1 byte</td>
+          <td>Overworld</td>
+          <td colspan="2">
+            Level unlock trigger, advances player to next level when written to.
+          </td>
+        </tr>
+        <tr>
+          <td class="addr" id="a0399">$0399</td>
+          <td>1 byte</td>
+          <td>Misc</td>
+          <td colspan="2">
+            Current player.<br />
+            00 = Player 1<br />
+            01 = Player 2
+          </td>
+        </tr>
+        <tr>
+          <td class="addr" id="a039E">$039E</td>
+          <td>1 byte</td>
+          <td>Overworld</td>
+          <td colspan="2">Number of levels completed.</td>
+        </tr>
+        <tr>
+          <td class="addr" id="a03A1">$03A1</td>
+          <td>2 bytes</td>
+          <td>Graphics</td>
+          <td colspan="2">PPU update pointer (Little-Endian).</td>
+        </tr>
+        <tr>
+          <td class="addr" id="a03A4">$03A4</td>
+          <td>1 byte</td>
+          <td>Graphics</td>
+          <td colspan="2">PPU data buffer write count</td>
+        </tr>
+        <tr>
+          <td class="addr" id="a03A5">$03A5</td>
+          <td>32 bytes</td>
+          <td>Graphics</td>
+          <td colspan="2">PPU data buffer</td>
+        </tr>
+        <tr>
+          <td class="addr" id="a03C5">$03C5</td>
+          <td>1 byte</td>
+          <td>Graphics</td>
+          <td colspan="2">1st 1K BG CHR bank</td>
+        </tr>
+        <tr>
+          <td class="addr" id="a03C6">$03C6</td>
+          <td>1 byte</td>
+          <td>Graphics</td>
+          <td colspan="2">3rd 1K BG CHR bank</td>
+        </tr>
+        <tr>
+          <td class="addr" id="a03C7">$03C7</td>
+          <td>1 byte</td>
+          <td>Graphics</td>
+          <td colspan="2">1st 1K sprite CHR bank</td>
+        </tr>
+        <tr>
+          <td class="addr" id="a03C8">$03C8</td>
+          <td>1 byte</td>
+          <td>Graphics</td>
+          <td colspan="2">2nd 1K sprite CHR bank</td>
+        </tr>
+        <tr>
+          <td class="addr" id="a03C9">$03C9</td>
+          <td>1 byte</td>
+          <td>Graphics</td>
+          <td colspan="2">3rd 1K sprite CHR bank</td>
+        </tr>
+        <tr>
+          <td class="addr" id="a03CA">$03CA</td>
+          <td>1 byte</td>
+          <td>Graphics</td>
+          <td colspan="2">4th 1K sprite CHR bank</td>
+        </tr>
+        <tr>
+          <td class="addr" id="a03CB">$03CB</td>
+          <td>1 byte</td>
+          <td>Graphics</td>
+          <td colspan="2">2nd 1K BG CHR bank</td>
+        </tr>
+        <tr>
+          <td class="addr" id="a03CC">$03CC</td>
+          <td>1 byte</td>
+          <td>Graphics</td>
+          <td colspan="2">
+            4th 1K sprite CHR bank, unused as this bank is always either
+            animated or in 2K banking mode.
+          </td>
+        </tr>
+        <tr>
+          <td class="addr" id="a03CD">$03CD</td>
+          <td>1 byte</td>
+          <td>Graphics</td>
+          <td colspan="2">BG bank animation.</td>
+        </tr>
+        <tr>
+          <td class="addr" id="a0400">$0400</td>
+          <td>128 bytes</td>
+          <td>Graphics</td>
+          <td colspan="2">
+            16x16 tile attribute data, last 8 bytes are unused.
+          </td>
+        </tr>
+        <tr>
+          <td class="addr" id="a0480">$0480</td>
+          <td>1 byte</td>
+          <td>Flag</td>
+          <td colspan="2">BG render next column flag? Set to 20.</td>
+        </tr>
+        <tr>
+          <td class="addr" id="a0481">$0481</td>
+          <td>1 byte</td>
+          <td>Graphics</td>
+          <td colspan="2">Next BG column being to render.</td>
+        </tr>
+        <tr>
+          <td class="addr" id="a0485">$0485</td>
+          <td>56 bytes</td>
+          <td>Graphics</td>
+          <td colspan="2">
+            8x8 column tiles, contains every tile of the next column being
+            rendered.
+          </td>
+        </tr>
+        <tr>
+          <td class="addr" id="a04C1">$04C1</td>
+          <td>48 bytes</td>
+          <td>Graphics</td>
+          <td colspan="2">
+            BG column tile attribute write buffer? Contains 16 3-byte arrays, with all but the first being for attributes. Format:<br />
+            Bytes 1 - 2: PPU address<br />
+            Byte 3: Data to write
+          </td>
+        </tr>
+        <tr>
+          <td class="addr" id="a04F3">$04F3</td>
+          <td>1 byte</td>
+          <td></td>
+          <td colspan="2"></td>
+        </tr>
+        <tr>
+          <td class="addr" id="a0">$0</td>
+          <td>1 byte</td>
+          <td></td>
+          <td colspan="2"></td>
+        </tr>
+        <tr>
+          <td class="addr" id="a0">$0</td>
+          <td>1 byte</td>
+          <td></td>
+          <td colspan="2"></td>
+        </tr>
+        <tr>
+          <td class="addr" id="a0">$0</td>
+          <td>1 byte</td>
+          <td></td>
+          <td colspan="2"></td>
+        </tr>
+        <tr>
+          <td class="addr" id="a0">$0</td>
+          <td>1 byte</td>
+          <td></td>
+          <td colspan="2"></td>
+        </tr>
+        <tr>
+          <td class="addr" id="a0">$0</td>
+          <td>1 byte</td>
+          <td></td>
+          <td colspan="2"></td>
+        </tr>
+        <tr>
+          <td class="addr" id="a0">$0</td>
+          <td>1 byte</td>
+          <td></td>
+          <td colspan="2"></td>
+        </tr>
+        <tr>
+          <td class="addr" id="a0">$0</td>
+          <td>1 byte</td>
+          <td></td>
+          <td colspan="2"></td>
+        </tr>
+        <tr>
+          <td class="addr" id="a0">$0</td>
+          <td>1 byte</td>
+          <td></td>
+          <td colspan="2"></td>
+        </tr>
+        <tr>
+          <td class="addr" id="a0">$0</td>
+          <td>1 byte</td>
+          <td></td>
+          <td colspan="2"></td>
+        </tr>
+        <tr>
+          <td class="addr" id="a0">$0</td>
+          <td>1 byte</td>
+          <td></td>
+          <td colspan="2"></td>
+        </tr>
+        <tr>
+          <td class="addr" id="a0">$0</td>
+          <td>1 byte</td>
+          <td></td>
+          <td colspan="2"></td>
+        </tr>
+        <tr>
+          <td class="addr" id="a0">$0</td>
+          <td>1 byte</td>
+          <td></td>
+          <td colspan="2"></td>
+        </tr>
+        <tr>
+          <td class="addr" id="a0">$0</td>
+          <td>1 byte</td>
+          <td></td>
+          <td colspan="2"></td>
+        </tr>
+        <tr>
+          <td class="addr" id="a0">$0</td>
+          <td>1 byte</td>
+          <td></td>
+          <td colspan="2"></td>
+        </tr>
+        <tr>
+          <td class="addr" id="a0">$0</td>
+          <td>1 byte</td>
+          <td></td>
+          <td colspan="2"></td>
+        </tr>
+      </table>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
